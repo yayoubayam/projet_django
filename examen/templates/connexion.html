@@ -1,0 +1,51 @@
+<!-- {% extends 'base.html' %}
+
+{% block content %} 
+<style>
+.d1 {
+    margin-left: auto;
+    margin-right: auto;
+     height: 200px;
+     width: 350px;
+     /* background-color:silver; */
+}
+</style>
+<div class="d1">
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <label for="">Username:</label>
+        <input type="text" name="username" placeholder="Entrez votre nom d'utilisateur" required><br><br>
+        <label for="">Password:</label> 
+        <input type="password" name="password" placeholder="Entrez votre mot de passe" required><br><br>
+        <input style="background-color:beige" type="submit" value="Login">
+    </form>
+</div>
+
+{% endblock %} -->
+
+
+{% include 'base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+  <h1 align="center">Creation d'utilisateurs</h1>
+          <div class="card col-md-6 offset-3"> 
+          <h5 class="card-header" align="center">Formulaire</h5>
+          <div class="card-body">
+            <form method="POST" action="#">
+              {% csrf_token %}
+              {{form.as_p}}
+              <p align="center">
+                <button type="submit" class="btn btn-success" name="">S'inscrire</button>
+              </p>
+            </form>
+            <a href="connexion"></a>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> 
+
+
+        </div>
+        
+
+</div>
+{% endblock content %}

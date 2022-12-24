@@ -1,0 +1,24 @@
+{% include 'base.html' %}
+
+{% block content %}
+<style>
+    .button{
+        background-color: blue;
+        width: 100px;
+        height: 40px;
+        color: aliceblue;
+    }
+</style>
+
+<div>
+  <h1 align="center">
+     <form action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input class="button" type="submit" value="INSCRIT" >
+
+    </form>
+  </h1>
+</div>
+
+{% endblock %}

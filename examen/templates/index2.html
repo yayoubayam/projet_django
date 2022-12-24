@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> 
+
+</head>
+<body>
+{% include 'base.html' %}
+{% block title %}
+<!-- Mes tâches |  -->
+{% endblock title %}
+{% block content %}
+    <h1>Hello, this is my page user using Django!</h1>
+
+    {% csrf_token %}
+     <!-- Formulaire d'ajout d'une tâche
+     <form method="post">
+    {% csrf_token %}
+        {{task_form.title}}
+        <button type="submit">Ajouter</button>
+    </form> -->
+            <b><u><p align="center">Liste des taches</p></u></b>
+            <table class="table table-warning table-hover">
+                <tr>
+                    <th>ID</th>
+                    <th>NOM</th>
+                    <th>MODIFIER</th>
+                    <th>SUPPRIMER</th> 
+                    <th>EFFECTUER</th>
+                </tr>
+                {% for task in tasks %}
+                <tr>
+                    
+                    <td>{{task.id}}</td>
+                    <!-- <td>{{task.title}}</td> -->
+                    <td>
+                     {{task.title}}
+                    </td>
+                    <td ><a class="btn btn-success" href="{% url 'update' task.id %}">Modifier</a></td>
+                    <td ><a class="btn btn-danger" href="{% url 'delete' task.id %}">Supprimer</a></td>
+                    <td>  {% if task.completed == True %}
+                       <h5>oui</h5>
+                   {% else %}
+                       <h6>non</h6>
+                   {% endif %}</td>
+                    
+                </tr>
+                {% endfor %}
+                </table>
+            <!-- {% for task in tasks %}
+            <li>
+				{% if task.completed == True %}
+                    <strike> {{task.title}} </strike>
+                {% else %}
+                    {{task.title}}
+                {% endif %}
+                | <a href="{% url 'update' task.id %}">Modifier</a>
+                | <a href="{% url 'delete' task.id %}">Supprimer</a>
+
+            </li>
+            {% endfor %} -->
+
+{% endblock content %}   
+</body>
+</html> 

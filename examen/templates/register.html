@@ -1,0 +1,50 @@
+{% include "base.html" %}
+{% block content %}  
+    <style>
+
+        form{
+            height: 200px;
+            
+        }
+        button{
+            background-color: sandybrown;
+        }
+    </style>
+    <div class="container mt-5"> 
+         <h1 align="center">S'inscrire</h1> 
+          <div class="card col-md-6 offset-3">  
+          <div class="card-body">  
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+        {% for field in form %}
+          <tr>
+            <td>{{ field.label_tag }}</td>
+            <td>{{ field }}</td>
+          </tr>
+          {% for error in field.errors %}
+            <tr><td></td><td class="alert alert-danger">{{ error }}</td></tr>
+            {% endfor %}
+          {% endfor %}
+         </table><br>
+        <p align="center">
+        <button type="submit">Insert</button>  
+    </p>     
+    </form>
+    <div>
+    <small><h4 class="mt-2">
+        Already registered?
+        <a href="{% url 'login' %}">Login</a>
+    
+    <br>
+    Mot de passe oublié ?
+        <a href="#">
+            Renouveler mon mot de passe
+        </a>
+    </h4>
+    </small>
+  </div>
+  </div>
+  </div>
+    </div>
+{% endblock %}

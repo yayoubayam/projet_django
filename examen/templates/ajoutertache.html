@@ -1,0 +1,26 @@
+{% include 'base.html' %}
+
+{% block content %}
+<font> 
+    <h1 align="center">create task</h1> 
+</font> 
+<style>
+    .button{
+        background-color: sandybrown;
+        /* width: 110px;
+        height: 40px; */
+        /* color: aliceblue; */
+    }
+</style>
+
+<div>
+  <h1 align="center">
+     <form action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input class="button" type="submit" value="Insert" >
+    </form>
+  </h1>
+</div>
+
+{% endblock %}
